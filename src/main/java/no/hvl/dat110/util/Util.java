@@ -11,12 +11,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+
 
 import no.hvl.dat110.middleware.Node;
 import no.hvl.dat110.rpc.interfaces.NodeInterface;
@@ -45,7 +47,11 @@ public class Util {
 		
 		// Task: given an identifier, id: check whether pred < id <= node
 		
-		return false;
+		if(upper.compareTo(lower) < 0) {
+			return lower.compareTo(id) <= 0 || id.compareTo(upper) <= 0;
+		}
+		return lower.compareTo(id) <= 0 && id.compareTo(upper) <= 0;
+
 
 	}
 	
